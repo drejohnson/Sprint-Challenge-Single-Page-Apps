@@ -35,22 +35,23 @@ export default function CharacterList() {
   //   //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
   // }, []);
 
-  if (loading) return null;
-  if (error) return `Error! ${error}`;
+  // if (loading) return null;
+  // if (error) return `Error! ${error}`;
 
   return (
     <section className='character-list'>
       <h2>Characters</h2>
       <SearchForm handleSearch={handleSearch} query={query} />
-      {data.characters.results.map(character => {
-        return character.name.toLowerCase().includes(query.toLowerCase()) ? (
-          <Fragment key={character.id}>
-            <Link to={`/character/${character.id}`}>
-              <CharacterCard character={character} />
-            </Link>
-          </Fragment>
-        ) : null;
-      })}
+      {data &&
+        data.characters.results.map(character => {
+          return character.name.toLowerCase().includes(query.toLowerCase()) ? (
+            <Fragment key={character.id}>
+              <Link to={`/character/${character.id}`}>
+                <CharacterCard character={character} />
+              </Link>
+            </Fragment>
+          ) : null;
+        })}
     </section>
   );
 }
