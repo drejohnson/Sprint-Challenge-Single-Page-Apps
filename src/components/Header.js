@@ -36,29 +36,36 @@ export default function Header() {
   let history = useHistory();
   let isCharacters = useRouteMatch('/characters');
   let isHome = useRouteMatch('/');
+  let isDetail = useRouteMatch('/character/:id');
 
   let handleClick = e => {
     e.stopPropagation();
     isCharacters ? history.push('/') : history.push('/characters');
   };
-  let back = e => {
+  let goBack = e => {
     e.stopPropagation();
     history.goBack();
   };
   return (
     <StyledHeader>
       <h1 className='ui center'>Rick &amp; Morty Fan Page</h1>
-      <Fab type='button' onClick={handleClick}>
-        {isCharacters ? (
-          <>
-            <ChevronLeft /> Home
-          </>
-        ) : (
-          <>
-            Characters <ChevronRight />
-          </>
-        )}
-      </Fab>
+      {isDetail ? (
+        <Fab type='button' onClick={goBack}>
+          <ChevronLeft /> Go Back
+        </Fab>
+      ) : (
+        <Fab type='button' onClick={handleClick}>
+          {isCharacters ? (
+            <>
+              <ChevronLeft /> Home
+            </>
+          ) : (
+            <>
+              Characters <ChevronRight />
+            </>
+          )}
+        </Fab>
+      )}
     </StyledHeader>
   );
 }
