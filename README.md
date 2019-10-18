@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: When using client-side routing, the routing is handled internally by JavaScript which allows use to control/manipulate our apps url with forcing a browser refresh. Since the routing handled by JavaScript there's no need to set up a server just for routing.
 
 ## Project Set Up
 
